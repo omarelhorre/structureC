@@ -23,8 +23,8 @@ int main(void){ //etape 2 : allocation du memoire
     } 
 // est ce que l'utilisateur veut ajouter des cases?
     char answer;
-    do {printf("voulez vous modifier votre panier? Y/N");
-    scanf("%c",&answer);} while((answer != 'Y') && (answer != 'N'));
+    do {printf("voulez vous modifier votre panier? Y/N \n");
+    scanf(" %c",&answer);} while((answer != 'Y') && (answer != 'N'));
     
 
     //realloc
@@ -37,7 +37,7 @@ int main(void){ //etape 2 : allocation du memoire
             scanf("%d",&nvTaille);} while(nvTaille < 1);
             
             Produit *tmp = (Produit *) realloc(elem, nvTaille * sizeof(Produit));
-
+        if(tmp==NULL) exit(1);
 
             if (nvTaille > taille) {
                 for(int i =taille ; i< nvTaille ; i++){
@@ -50,12 +50,14 @@ int main(void){ //etape 2 : allocation du memoire
             }
 
 
-            
+
          for(int i = 0; i<nvTaille ; i++ ){
 
             printf("le nom du %d%s article est : %s, son prix est %.2f \n ",i+1, i==0? "ér":"ème", tmp[i].nom, tmp[i].prix);
          }
-        free(tmp); free(elem);
+
+    
+        free(tmp);
 
         }
 

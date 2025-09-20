@@ -15,12 +15,18 @@ int main(void){
     /* explication de la fonction malloc(): elle prend un argument, c'est les bytes a allouer. */
 
     //loop
+
+    // loop affiche le tableau
+     for(int i = 0; i<taille ; i++){
+        printf("T[%d] = %d \n", i,p[i]); // j'ai ecrit T juste pour la convention.
+    }
+    printf("\n \n \n");
     for(int i = 0; i<taille ; i++){
         p[i] = i;
         p[i] = p[i] * p[i];
         printf("T[%d] = %d \n", i,p[i]); // j'ai ecrit T juste pour la convention.
     }
-free(p); //pour pouvoir allouer une autre fois.
+free(p); //pour ne pas avoir du memory.
 return 0;
     
 }

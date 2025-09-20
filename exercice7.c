@@ -1,45 +1,34 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> // cette librairie nous permet d'utiliser des fonction comme malloc(), calloc(), realloc().
 
 int main(void){
-    //malloc pour 10 cases (countdown)
-printf("MALLOC \n ");
-    int *p= (int*) malloc(10*sizeof(int));
-    if(p==NULL)exit(1);
-    int *po;
-    int taille = 10;
-    for (po = p; po<p+10; po++){
-       *po = taille; 
-       printf("%d \n",*po);
-        taille--;
-        
+    int taille;
+
+    //loop prompt et demander a l'utilisateur la taille a allouer
+    do{
+    printf("entrer la taille de votre tableau : ");
+    scanf("%d",&taille);}while(taille<1);   
+
+  
+    int *p = (int *) malloc(sizeof(int) * taille); //allouer les cases dans la memoire NB que il y aura des elements aléatoire pas comme calloc().
+    if (p==NULL) {printf("ERREUR PAS ASSEZ DE MEMOIRE A ALLOUER" );exit(1);} //si il n'y a pas de memoire pour allouer
+    /* explication de la fonction malloc(): elle prend un argument, c'est les bytes a allouer. */
+
+    //loop
+
+    // loop affiche le tableau
+     for(int i = 0; i<taille ; i++){
+        printf("T[%d] = %d \n", i,p[i]); // j'ai ecrit T juste pour la convention.
     }
-printf("CALLOC \n ");
-    //calloc 
-
-     int *pprime= (int*) calloc(10,sizeof(int));
-    if(p==NULL)exit(1);
-    int *poprime;
-    taille = 10;
-    for (poprime = pprime; poprime<pprime+10; poprime++){
-       *poprime = taille; 
-       printf("%d \n",*poprime);
-        taille--;
-        
+    printf("\n \n \n");
+    for(int i = 0; i<taille ; i++){
+        p[i] = i;
+        p[i] = p[i] * p[i];
+        printf("T[%d] = %d \n", i,p[i]); // j'ai ecrit T juste pour la convention.
     }
-    free(pprime);
-
-    //realloc( je vvais reallouer le premier cas)
-    int *tmp = (int *) realloc(p, sizeof(int)*5); //cas shrink
-    taille = 10;
-    printf("REALLOC \n ");
-    for(int i=0; i<5; i++){
-        tmp[i] = taille;
-        printf("%d \n ",tmp[i]);
-        taille--; 
-
-    }
-
-    free(tmp);
+free(p); //pour ne pas avoir du memory.
+return 0;
+    
 }
+
 
