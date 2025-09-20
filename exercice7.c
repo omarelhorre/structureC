@@ -3,7 +3,7 @@
 
 int main(void){
     //malloc pour 10 cases (countdown)
-printf("MALLOC");
+printf("MALLOC \n ");
     int *p= (int*) malloc(10*sizeof(int));
     if(p==NULL)exit(1);
     int *po;
@@ -14,8 +14,7 @@ printf("MALLOC");
         taille--;
         
     }
-    free(p);
-printf("CALLOC");
+printf("CALLOC \n ");
     //calloc 
 
      int *pprime= (int*) calloc(10,sizeof(int));
@@ -28,18 +27,19 @@ printf("CALLOC");
         taille--;
         
     }
-    free(p);
+    free(pprime);
 
     //realloc( je vvais reallouer le premier cas)
     int *tmp = (int *) realloc(p, sizeof(int)*5); //cas shrink
     taille = 10;
-    
+    printf("REALLOC \n ");
     for(int i=0; i<5; i++){
         tmp[i] = taille;
-        printf("%d",tmp[i]);
-        taille--;
+        printf("%d \n ",tmp[i]);
+        taille--; 
 
     }
+
+    free(tmp);
 }
 
-  
