@@ -21,7 +21,6 @@ int main(void){
         p[i] = p[i] * p[i];
         printf("T[%d] = %d \n", i,p[i]);
     }
-free(p); 
 
 int nouvelleTaille;
 do{printf("entrer maintenant la nouvelle taille : "); 
@@ -30,8 +29,7 @@ int *tmp = (int *) realloc(p , nouvelleTaille * sizeof(int)); // la fonction rea
 if (tmp == NULL) exit(1);  // si il n'y a plus d'espace, on sort du programme 
 //loop meme traitement qu'avant
 for(int i=0; i< nouvelleTaille; i++){
-tmp[i] = i;
-tmp[i] = tmp[i]* tmp[i];
+tmp[i] = tmp[i]* 10;
 printf("T[%d] = %d \n ",i, tmp[i]);}
 free(tmp);
 return 0;
